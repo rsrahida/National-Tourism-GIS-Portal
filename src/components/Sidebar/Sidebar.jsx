@@ -4,6 +4,7 @@ import styles from "./Sidebar.module.css";
 
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
+  faLocationDot,
   faMap,
   faHotel,
   faUtensils,
@@ -14,7 +15,8 @@ import {
 } from "@fortawesome/free-solid-svg-icons";
 
 const sidebarItems = [
-  { path: "/", icon: faMap },
+  { path: "/", icon: faLocationDot },
+  { path: "/attractions", icon: faMap },
   { path: "/hotel-zones", icon: faHotel },
   { path: "/restaurants-nearby", icon: faUtensils },
   { path: "/route-planner", icon: faRoute },
@@ -22,7 +24,6 @@ const sidebarItems = [
   { path: "/city-scenes", icon: faCube },
   { path: "/story-maps", icon: faBookOpen },
 ];
-
 const Sidebar = () => {
   return (
     <div className={styles.sidebar}>

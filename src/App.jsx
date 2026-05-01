@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from "react";
-import { Routes, Route } from "react-router-dom";
+import { Routes, Route, Navigate } from "react-router-dom";
+import MapView from "./components/MapView/MapView";
 import Navbar from "./components/Navbar/Navbar";
 import Sidebar from "./components/Sidebar/Sidebar";
 import Loading from "./components/Loading/Loading";
@@ -36,7 +37,8 @@ const App = () => {
         <Sidebar />
         <div className={styles.content}>
           <Routes>
-            <Route path="/" element={<Attractions />} />
+            <Route path="/" element={<MapView />} />
+            <Route path="/attractions" element={<Attractions />} />
             <Route path="/route-planner" element={<RoutePlanner />} />
             <Route path="/hotel-zones" element={<HotelZones />} />
             <Route path="/restaurants-nearby" element={<RestaurantNearby />} />

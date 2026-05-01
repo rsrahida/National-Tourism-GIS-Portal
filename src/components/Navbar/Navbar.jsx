@@ -3,7 +3,7 @@ import { Link, NavLink } from "react-router-dom";
 import styles from "./Navbar.module.css";
 
 const navItems = [
-  { path: "/", label: "Attraksiyonlar" },
+  { path: "/attractions", label: "Attraksiyonlar" },
   { path: "/hotel-zones", label: "Otellər" },
   { path: "/restaurants-nearby", label: "Restoranlar" },
   { path: "/route-planner", label: "Marşrutlar" },

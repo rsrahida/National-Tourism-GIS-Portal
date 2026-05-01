@@ -4,14 +4,12 @@
   flex-direction: column;
 }
 
-/* Navbar altında əsas layout */
 .layout {
   display: flex;
   flex: 1;
-  overflow: hidden; /* sidebar scroll yaratmasın */
+  overflow: hidden;
 }
 
-/* Content sahə scroll edir */
 .content {
   flex: 1;
   overflow-y: auto;
