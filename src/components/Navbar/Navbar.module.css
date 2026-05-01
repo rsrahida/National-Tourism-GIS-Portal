@@ -1,0 +1,113 @@
+.navbar {
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+  background-color: #415808;
+  color: white;
+  padding: 14px 0;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
+  border-bottom: 1px solid #cfd8b6;
+}
+
+.container {
+  width: 90%;
+  margin: 0 auto;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.logo {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  text-decoration: none;
+  color: white;
+  margin-left: -60px;
+}
+
+.icon {
+  width: 33px;
+  height: 33px;
+}
+
+.logoText {
+  display: flex;
+  flex-direction: column;
+  line-height: 1;
+}
+
+.main {
+  font-size: 20px;
+  font-weight: 700;
+}
+
+.sub {
+  font-size: 11px;
+  opacity: 0.8;
+}
+
+.menu {
+  display: flex;
+  gap: 20px;
+  flex: 1;
+  justify-content: center;
+}
+
+.link {
+  color: white;
+  text-decoration: none;
+  font-size: 16px;
+  position: relative;
+  padding-bottom: 5px;
+}
+
+.link::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  width: 0%;
+  height: 2px;
+  background-color: white;
+  transition: width 0.3s ease;
+}
+
+.link:hover::after {
+  width: 100%;
+}
+
+.active::after {
+  width: 100%;
+}
+
+.live {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 14px;
+}
+
+.liveDot {
+  width: 10px;
+  height: 10px;
+  background-color: red;
+  border-radius: 50%;
+  box-shadow: 0 0 8px red;
+  animation: pulse 1.5s infinite;
+}
+
+@keyframes pulse {
+  0% {
+    transform: scale(1);
+    opacity: 1;
+  }
+  50% {
+    transform: scale(1.4);
+    opacity: 0.6;
+  }
+  100% {
+    transform: scale(1);
+    opacity: 1;
+  }
+}

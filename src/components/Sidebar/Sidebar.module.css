@@ -1,0 +1,58 @@
+.sidebar {
+  width: 60px;
+  height: 100%;
+  background-color: #415808;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  flex-shrink: 0;
+  overflow: hidden;
+}
+
+.menu {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  width: 100%;
+}
+
+.link {
+  position: relative;
+  color: #cfd8b6;
+  font-size: 20px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  height: 70px;
+  text-decoration: none;
+  transition: 0.2s ease;
+}
+
+.link::after {
+  content: "";
+  position: absolute;
+  bottom: 0;
+  width: 40px;
+  height: 1px;
+  background: rgba(255, 255, 255, 0.18);
+}
+
+.link:last-child::after {
+  display: none;
+}
+
+.link:hover {
+  background-color: rgba(255, 255, 255, 0.12);
+  color: #fff;
+}
+
+.active {
+  background-color: #ffffff;
+  color: #415808;
+}
+
+.active::after {
+  display: none;
+}
