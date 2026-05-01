@@ -1,9 +1,8 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { Routes, Route } from "react-router-dom";
-
 import Navbar from "./components/Navbar/Navbar";
 import Sidebar from "./components/Sidebar/Sidebar";
-
+import Loading from "./components/Loading/Loading";
 import Attractions from "./components/sections/Attractions/Attractions";
 import RoutePlanner from "./components/sections/RoutePlanner/RoutePlanner";
 import HotelZones from "./components/sections/HotelZones/HotelZones";
@@ -15,13 +14,26 @@ import StoryMaps from "./components/sections/StoryMaps/StoryMaps";
 import styles from "./App.module.css";
 
 const App = () => {
+  const [loading, setLoading] = useState(true);
+
+  useEffect(() => {
+    const timer = setTimeout(() => {
+      setLoading(false);
+    }, 3200);
+
+    return () => clearTimeout(timer);
+  }, []);
+
+  if (loading) {
+    return <Loading />;
+  }
+
   return (
     <div className={styles.app}>
       <Navbar />
 
       <div className={styles.layout}>
         <Sidebar />
-
         <div className={styles.content}>
           <Routes>
             <Route path="/" element={<Attractions />} />

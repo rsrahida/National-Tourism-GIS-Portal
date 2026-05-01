@@ -29,7 +29,13 @@ const Navbar = () => {
         </Link>
         <div className={styles.menu}>
           {navItems.map((item) => (
-            <NavLink key={item.path} to={item.path} className={styles.link}>
+            <NavLink
+              key={item.path}
+              to={item.path}
+              className={({ isActive }) =>
+                isActive ? `${styles.link} ${styles.active}` : styles.link
+              }
+            >
               {item.label}
             </NavLink>
           ))}
