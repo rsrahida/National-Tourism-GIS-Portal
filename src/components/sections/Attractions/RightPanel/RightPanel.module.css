@@ -1,0 +1,24 @@
+.panel {
+  width: 0;
+  height: 100%;
+  background: #415808;
+  transition: width 0.3s ease;
+  overflow: hidden;
+  flex-shrink: 0;
+  position: relative;
+  z-index: 20;
+}
+
+.open {
+  width: 320px;
+}
+
+.closed {
+  width: 0;
+}
+
+.content {
+  padding: 70px 16px 16px;
+  color: white;
+  width: 320px;
+}

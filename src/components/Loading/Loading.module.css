@@ -1,12 +1,238 @@
 .loading {
   position: fixed;
-  top: 0;
-  left: 0;
-  width: 100vw;
-  height: 100vh;
-  background-color: #cfd8b6;
+  inset: 0;
+  background-color: #1a2e05;
   display: flex;
   align-items: center;
   justify-content: center;
   z-index: 9999;
+  overflow: hidden;
+}
+
+.grid {
+  position: absolute;
+  inset: 0;
+  background-image:
+    linear-gradient(rgba(207, 216, 182, 0.04) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(207, 216, 182, 0.04) 1px, transparent 1px);
+  background-size: 40px 40px;
+  pointer-events: none;
+}
+
+.content {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 40px;
+}
+
+.logo {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  animation: fadeDown 0.6s ease;
+}
+
+@keyframes fadeDown {
+  from {
+    opacity: 0;
+    transform: translateY(-16px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.logoIcon {
+  width: 48px;
+  height: 48px;
+  background-color: #415808;
+  border-radius: 12px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: 1px solid rgba(207, 216, 182, 0.2);
+}
+
+.planeSvg {
+  width: 28px;
+  height: 28px;
+}
+
+.logoText {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.logoMain {
+  font-size: 28px;
+  font-weight: 700;
+  color: #ffffff;
+  letter-spacing: 1px;
+}
+
+.logoSub {
+  font-size: 12px;
+  color: rgba(255, 255, 255, 0.6);
+  letter-spacing: 2px;
+  text-transform: uppercase;
+}
+
+.mapBox {
+  position: relative;
+  width: 200px;
+  height: 160px;
+  background-color: rgba(65, 88, 8, 0.3);
+  border: 1px solid rgba(207, 216, 182, 0.15);
+  border-radius: 16px;
+  overflow: hidden;
+  animation: fadeUp 0.6s ease 0.2s both;
+}
+
+@keyframes fadeUp {
+  from {
+    opacity: 0;
+    transform: translateY(16px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.mapLines {
+  position: absolute;
+  inset: 0;
+}
+
+.lineH {
+  position: absolute;
+  left: 0;
+  right: 0;
+  height: 1px;
+  background: rgba(207, 216, 182, 0.1);
+}
+
+.lineV {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  width: 1px;
+  background: rgba(207, 216, 182, 0.1);
+}
+
+.lineSvg {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+}
+
+.pin {
+  position: absolute;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.pinA {
+  top: 28%;
+  left: 22%;
+  animation: pinPop 0.4s ease 0.4s both;
+}
+.pinB {
+  top: 48%;
+  left: 58%;
+  animation: pinPop 0.4s ease 0.7s both;
+}
+.pinC {
+  top: 72%;
+  left: 52%;
+  animation: pinPop 0.4s ease 1s both;
+}
+
+@keyframes pinPop {
+  from {
+    opacity: 0;
+    transform: scale(0) translateY(-10px);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1) translateY(0);
+  }
+}
+
+.pinDot {
+  width: 10px;
+  height: 10px;
+  background-color: #cfd8b6;
+  border-radius: 50%;
+  border: 2px solid #1a2e05;
+  position: relative;
+  z-index: 1;
+}
+
+.pinRing {
+  width: 20px;
+  height: 20px;
+  border: 1.5px solid rgba(207, 216, 182, 0.5);
+  border-radius: 50%;
+  position: absolute;
+  top: -5px;
+  left: -5px;
+  animation: ringPulse 2s ease-in-out infinite;
+}
+
+@keyframes ringPulse {
+  0% {
+    transform: scale(1);
+    opacity: 0.6;
+  }
+  100% {
+    transform: scale(2.5);
+    opacity: 0;
+  }
+}
+
+.progressWrapper {
+  width: 260px;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  animation: fadeUp 0.6s ease 0.4s both;
+}
+
+.progressTrack {
+  width: 100%;
+  height: 3px;
+  background-color: rgba(207, 216, 182, 0.15);
+  border-radius: 99px;
+  overflow: hidden;
+}
+
+.progressFill {
+  height: 100%;
+  background-color: #cfd8b6;
+  border-radius: 99px;
+  transition: width 0.1s linear;
+}
+
+.progressLabels {
+  display: flex;
+  justify-content: space-between;
+}
+
+.progressLabel {
+  font-size: 12px;
+  color: rgba(207, 216, 182, 0.5);
+  letter-spacing: 0.5px;
+}
+
+.progressPercent {
+  font-size: 12px;
+  color: rgba(207, 216, 182, 0.7);
+  font-weight: 500;
 }
