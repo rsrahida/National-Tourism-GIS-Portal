@@ -411,7 +411,7 @@ const Attractions = () => {
         </div>
       )}
 
-      <RightPanel isOpen={isPanelOpen} />
+      <RightPanel isOpen={isPanelOpen} viewRef={viewRef} />
 
       {createPortal(
         <button
