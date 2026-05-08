@@ -231,9 +231,11 @@ const buildFeatureReduction = () => ({
 const Attractions = () => {
   const mapDivRef = useRef(null);
   const viewRef = useRef(null);
+  const layerRef = useRef(null);
   const [mapLoaded, setMapLoaded] = useState(false);
   const [isPanelOpen, setIsPanelOpen] = useState(false);
   const [tooltip, setTooltip] = useState(null);
+  const [selectedAttraction, setSelectedAttraction] = useState(null);
 
   useEffect(() => {
     const geojson = {
@@ -256,14 +258,10 @@ const Attractions = () => {
           entryFee: attraction.entryFee,
           openHours: attraction.openHours,
           description: attraction.description,
-          unesco: attraction.unesco,
-          featured: attraction.featured,
           pinColor: attraction.pinColor,
           tags: attraction.tags.join(", "),
           phone: attraction.phone || "",
           website: attraction.website || "",
-          accessibility: attraction.accessibility,
-          parkingNearby: attraction.parkingNearby,
           unesco: String(attraction.unesco),
           featured: String(attraction.featured),
           accessibility: String(attraction.accessibility),
@@ -306,6 +304,8 @@ const Attractions = () => {
       featureReduction: buildFeatureReduction(),
     });
 
+    layerRef.current = attractionsLayer;
+
     const map = new Map({
       basemap: "streets-navigation-vector",
       layers: [attractionsLayer],
@@ -321,16 +321,20 @@ const Attractions = () => {
 
     view.when(() => {
       setTimeout(() => setMapLoaded(true), 1000);
-
       view.on("pointer-move", async (event) => {
         const response = await view.hitTest(event);
 
         const result = response.results.find(
-          (r) => r.graphic?.layer?.title === "Attraksiyonlar",
+          (r) => r.graphic?.layer?.title === "Attraksiyonlar"
         );
 
         if (result) {
           const attrs = result.graphic.attributes;
+
+          if (attrs.cluster_count) {
+            setTooltip(null);
+            return;
+          }
           setTooltip({
             x: event.x,
             y: event.y,
@@ -338,6 +342,23 @@ const Attractions = () => {
           });
         } else {
           setTooltip(null);
+        }
+      });
+      view.on("click", async (event) => {
+        const response = await view.hitTest(event);
+
+        const result = response.results.find(
+          (r) => r.graphic?.layer?.title === "Attraksiyonlar"
+        );
+
+        if (result) {
+          const attrs = result.graphic.attributes;
+          if (attrs.cluster_count) return;
+          const full = mockData.attractions.find((a) => a.id === attrs.id);
+          if (full) {
+            setSelectedAttraction(full);
+            setIsPanelOpen(true);
+          }
         }
       });
     });
@@ -352,6 +373,17 @@ const Attractions = () => {
       }
     };
   }, []);
+
+  const handleCategoryFilter = (categories) => {
+    if (!layerRef.current) return;
+
+    if (!categories || categories.length === 0) {
+      layerRef.current.definitionExpression = "";
+    } else {
+      const quoted = categories.map((c) => `'${c}'`).join(", ");
+      layerRef.current.definitionExpression = `category IN (${quoted})`;
+    }
+  };
 
   return (
     <div className={styles.container}>
@@ -411,21 +443,28 @@ const Attractions = () => {
         </div>
       )}
 
-      <RightPanel isOpen={isPanelOpen} viewRef={viewRef} />
+      <RightPanel
+        isOpen={isPanelOpen}
+        viewRef={viewRef}
+        onCategoryFilter={handleCategoryFilter}
+        selectedAttraction={selectedAttraction}
+        onClearSelection={() => setSelectedAttraction(null)}
+        onSelectAttraction={(attraction) => setSelectedAttraction(attraction)}
+      />
 
       {createPortal(
         <button
           style={{
             position: "fixed",
             top: "70px",
-            right: "10px",
-            width: "42px",
-            height: "42px",
+            right: "5px",
+            width: "31px",
+            height: "45px",
             background: "#415808",
             color: "white",
             border: "none",
             borderRadius: "8px",
-            fontSize: "20px",
+            fontSize: "15px",
             cursor: "pointer",
             zIndex: 99999,
             display: "flex",
@@ -436,7 +475,7 @@ const Attractions = () => {
         >
           {isPanelOpen ? "✕" : "☰"}
         </button>,
-        document.body,
+        document.body
       )}
     </div>
   );

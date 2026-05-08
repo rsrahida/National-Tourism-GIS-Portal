@@ -18,9 +18,42 @@
 }
 
 .content {
-  padding: 70px 16px 16px;
+  padding: 12px 16px 24px;
   color: white;
-  width: 320px;
+  width: 300px;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  height: 100%;
+  overflow-y: auto;
+  box-sizing: border-box;
+
+
+}
+
+.contents {
+  padding: 12px 16px 24px;
+  color: white;
+  width: 300px;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  height: 100%;
+  overflow-y: auto;
+  box-sizing: border-box;
+  margin-top: -60px;
+
+}
+
+.content::-webkit-scrollbar {
+  width: 4px;
+}
+.content::-webkit-scrollbar-track {
+  background: transparent;
+}
+.content::-webkit-scrollbar-thumb {
+  background: rgba(255, 255, 255, 0);
+  border-radius: 4px;
 }
 
 .searchWrapper {
@@ -37,13 +70,10 @@
   border: 1px solid rgba(255, 255, 255, 0.2);
   border-radius: 10px;
   padding: 8px 12px;
-  transition:
-    background 0.2s ease,
-    border-color 0.2s ease;
-  height: 38px;
-  margin-top: -55px;
-  width: 250px;
-  height: 35px;
+  transition: background 0.2s ease, border-color 0.2s ease;
+  width: 100%;
+  height: 40px;
+  box-sizing: border-box;
 }
 
 .searchBox:focus-within {
@@ -54,7 +84,7 @@
 .searchIcon {
   width: 16px;
   height: 16px;
-  color: rgba(255, 255, 255, 0.6);
+  color: rgba(255, 255, 255, 0.779);
   flex-shrink: 0;
 }
 
@@ -100,11 +130,7 @@
 .resultList::-webkit-scrollbar {
   width: 4px;
 }
-
-.resultList::-webkit-scrollbar-track {
-  background: transparent;
-}
-
+.resultList::-webkit-scrollbar-track { background: transparent; }
 .resultList::-webkit-scrollbar-thumb {
   background: rgba(255, 255, 255, 0.2);
   border-radius: 4px;
@@ -117,11 +143,10 @@
   transition: background 0.15s ease;
 }
 
-.resultItem:last-child {
-  border-bottom: none;
-}
+.resultItem:last-child { border-bottom: none; }
 
-.resultItem:hover {
+.resultItem:hover,
+.resultItemActive {
   background: rgba(255, 255, 255, 0.1);
 }
 
@@ -134,7 +159,7 @@
 
 .resultMeta {
   font-size: 11.5px;
-  color: rgba(255, 255, 255, 0.5);
+  color: rgba(255, 255, 255, 0.8);
 }
 
 .noResult {
@@ -143,4 +168,608 @@
   font-size: 13px;
   color: rgba(255, 255, 255, 0.4);
   padding: 12px 0;
+}
+
+.section {
+  display: flex;
+  flex-direction: column;
+  border-top: 1px solid rgba(255, 255, 255, 0.1);
+  margin: 0 -16px;
+  padding: 0 16px;
+}
+
+.sectionHeader {
+  width: calc(100% + 0px);
+  display: flex;
+  align-items: center;
+  gap: 7px;
+  padding: 11px 0;
+  background: none;
+  border: none;
+  cursor: pointer;
+  text-align: left;
+  transition: opacity 0.15s;
+  font-family: inherit;
+}
+
+.sectionHeader:hover {
+  opacity: 0.8;
+}
+
+.sectionTitle {
+  font-size: 12px;
+  font-weight: 700;
+  
+  color: rgba(255, 255, 255, 0.984);
+  flex: 1;
+}
+
+.sectionCount {
+  background: rgba(160, 210, 40, 0.22);
+  border: 1px solid rgba(160, 210, 40, 0.4);
+  color: #d4ef7a;
+  border-radius: 9px;
+  padding: 1px 7px;
+  font-size: 10px;
+  font-weight: 700;
+}
+
+.sectionChevron {
+  font-size: 18px;
+  color: rgba(255, 255, 255, 0.35);
+  display: inline-block;
+  transition: transform 0.2s;
+  transform: rotate(90deg);
+  line-height: 1;
+}
+
+.sectionChevronOpen {
+  transform: rotate(-90deg);
+}
+
+.sectionBody {
+  padding-bottom: 12px;
+}
+
+.emptyMini {
+  font-size: 12px;
+  color: #EFF7C8;
+  line-height: 1.6;
+  padding: 4px 0 4px;
+}
+
+.chipGrid {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.chip {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  background: rgba(255, 255, 255, 0.08);
+  border: 1px solid rgba(255, 255, 255, 0.14);
+  border-radius: 8px;
+  padding: 8px 12px;
+  cursor: pointer;
+  color: rgba(255, 255, 255, 0.75);
+  font-size: 13px;
+  font-family: inherit;
+  text-align: left;
+  width: 100%;
+  transition: background 0.15s ease, border-color 0.15s ease, color 0.15s ease;
+}
+
+.chip:hover {
+  background: rgba(255, 255, 255, 0.14);
+  border-color: rgba(255, 255, 255, 0.25);
+  color: white;
+}
+
+.chipActive {
+  background: rgba(160, 210, 40, 0.22);
+  border-color: rgba(160, 210, 40, 0.55);
+  color: #d4ef7a;
+}
+
+.chipActive:hover {
+  background: rgba(160, 210, 40, 0.3);
+}
+
+.chipIcon { font-size: 15px; line-height: 1; flex-shrink: 0; }
+.chipLabel { flex: 1; font-size: 13px; text-transform: capitalize;color: #eff9d8; }
+.chipCheck { font-size: 11px; color: #a0d228; font-weight: 700; flex-shrink: 0; }
+
+
+
+.clearFiltersBtn {
+  background: none;
+  border: none;
+  color: rgba(255, 255, 255, 0.45);
+  font-size: 11px;
+  cursor: pointer;
+  padding: 6px 0 0;
+  text-decoration: underline;
+  text-underline-offset: 2px;
+  transition: color 0.15s;
+  font-family: inherit;
+}
+
+.clearFiltersBtn:hover {
+  color: rgba(255, 255, 255, 0.85);
+}
+
+.favList {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.favItem {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  background: rgba(0, 0, 0, 0.2);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 9px;
+  padding: 9px 10px;
+  transition: border-color 0.15s;
+}
+
+.favItem:hover {
+  border-color: rgba(255, 255, 255, 0.2);
+}
+
+.favItemMain {
+  display: flex;
+  align-items: center;
+  gap: 9px;
+  flex: 1;
+  cursor: pointer;
+  min-width: 0;
+}
+
+.favIcon {
+  font-size: 17px;
+  flex-shrink: 0;
+}
+
+.favInfo {
+  min-width: 0;
+}
+
+.favName {
+  font-size: 13px;
+  font-weight: 600;
+  color: white;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.favMeta {
+  font-size: 11px;
+  color: rgba(255, 255, 255, 0.4);
+}
+
+.favActions {
+  display: flex;
+  gap: 5px;
+  flex-shrink: 0;
+}
+
+.favTripBtn {
+  width: 28px;
+  height: 28px;
+  background: rgba(160, 210, 40, 0.1);
+  border: 1px solid rgba(160, 210, 40, 0.25);
+  border-radius: 6px;
+  color: rgba(160, 210, 40, 0.7);
+  font-size: 13px;
+  font-weight: 700;
+  cursor: pointer;
+  transition: all 0.15s;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.favTripBtn:hover {
+  background: rgba(160, 210, 40, 0.2);
+  border-color: rgba(160, 210, 40, 0.5);
+  color: #d4ef7a;
+}
+
+.favTripBtnActive {
+  background: rgba(160, 210, 40, 0.22);
+  border-color: rgba(160, 210, 40, 0.5);
+  color: #d4ef7a;
+}
+
+.favRemoveBtn {
+  width: 28px;
+  height: 28px;
+  background: rgba(255, 100, 130, 0.1);
+  border: 1px solid rgba(255, 100, 130, 0.22);
+  border-radius: 6px;
+  color: rgba(255, 100, 130, 0.6);
+  font-size: 13px;
+  cursor: pointer;
+  transition: all 0.15s;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.favRemoveBtn:hover {
+  background: rgba(255, 100, 130, 0.2);
+  border-color: rgba(255, 100, 130, 0.5);
+  color: #ff6b8a;
+}
+
+.tripList {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+    margin-bottom: 40px;
+}
+
+.tripItem {
+  display: flex;
+  align-items: flex-start;
+  gap: 8px;
+  background: rgba(0, 0, 0, 0.2);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 9px;
+  padding: 9px 10px;
+  transition: border-color 0.15s;
+  cursor: pointer;
+
+}
+
+.tripItem:hover {
+  border-color: rgba(255, 255, 255, 0.2);
+}
+
+.tripIndex {
+  min-width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  background: rgba(160, 210, 40, 0.25);
+  border: 1px solid rgba(160, 210, 40, 0.45);
+  color: #d4ef7a;
+  font-size: 10px;
+  font-weight: 700;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  margin-top: 1px;
+}
+
+.tripIcon {
+  font-size: 17px;
+  line-height: 1;
+  flex-shrink: 0;
+  margin-top: 1px;
+}
+
+.tripInfo {
+  flex: 1;
+  min-width: 0;
+}
+
+.tripName {
+  font-size: 13px;
+  font-weight: 600;
+  color: white;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.tripMeta {
+  font-size: 11px;
+  color: rgba(255, 255, 255, 0.4);
+  margin-top: 2px;
+}
+
+.tripFee {
+  font-size: 11px;
+  color: #d4ef7a;
+  font-weight: 500;
+  margin-top: 3px;
+  background: rgba(160, 210, 40, 0.12);
+  border: 1px solid rgba(160, 210, 40, 0.25);
+  display: inline-block;
+  padding: 1px 7px;
+  border-radius: 5px;
+}
+
+.removeBtn {
+  background: none;
+  border: none;
+  color: rgba(255, 255, 255, 0.25);
+  font-size: 12px;
+  cursor: pointer;
+  padding: 2px 4px;
+  border-radius: 4px;
+  transition: color 0.15s, background 0.15s;
+  flex-shrink: 0;
+  line-height: 1;
+}
+
+.removeBtn:hover {
+  color: #ff6b8a;
+  background: rgba(255, 100, 130, 0.12);
+}
+
+.detailTopRow {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-top: 60px;
+  margin-bottom: 4px;
+}
+
+.backBtn {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  background: rgba(255, 255, 255, 0.1);
+  border: 1px solid rgba(255, 255, 255, 0.18);
+  border-radius: 8px;
+  color: rgba(255, 255, 255, 0.8);
+  font-size: 13px;
+  font-family: inherit;
+  padding: 7px 12px;
+  cursor: pointer;
+  transition: background 0.15s, color 0.15s;
+  align-self: flex-start;
+}
+
+.backBtn:hover {
+  background: rgba(255, 255, 255, 0.18);
+  color: white;
+}
+
+.backBtn svg {
+  width: 14px;
+  height: 14px;
+}
+
+.heartBtn {
+  background: rgba(255, 255, 255, 0.08);
+  border: 1px solid rgba(255, 255, 255, 0.18);
+  border-radius: 8px;
+  color: rgba(255, 255, 255, 0.5);
+  font-size: 18px;
+  width: 36px;
+  height: 36px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: all 0.2s;
+  line-height: 1;
+}
+
+.heartBtn:hover {
+  background: rgba(255, 100, 130, 0.15);
+  border-color: rgba(255, 100, 130, 0.35);
+  color: #ff6b8a;
+}
+
+.heartBtnActive {
+  background: rgba(255, 100, 130, 0.18);
+  border-color: rgba(255, 100, 130, 0.5);
+  color: #ff6b8a;
+}
+
+.heartBtnActive:hover {
+  background: rgba(255, 100, 130, 0.28);
+}
+
+.addTripBtn {
+  width: 100%;
+  background: rgba(255, 255, 255, 0.08);
+  border: 1px solid rgba(255, 255, 255, 0.16);
+  border-radius: 9px;
+  color: rgba(255, 255, 255, 0.7);
+  font-size: 13px;
+  font-family: inherit;
+  padding: 10px;
+  cursor: pointer;
+  transition: all 0.15s;
+  text-align: center;
+}
+
+.addTripBtn:hover {
+  background: rgba(160, 210, 40, 0.15);
+  border-color: rgba(160, 210, 40, 0.35);
+  color: #d4ef7a;
+}
+
+.addTripBtnActive {
+  background: rgba(160, 210, 40, 0.18);
+  border-color: rgba(160, 210, 40, 0.45);
+  color: #d4ef7a;
+}
+
+.detailHeader {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  flex-wrap: wrap;
+}
+
+.detailCategoryBadge {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  background: rgba(255, 255, 255, 0.12);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  border-radius: 20px;
+  padding: 3px 10px;
+  font-size: 12px;
+  color: rgba(255, 255, 255, 0.8);
+  text-transform: capitalize;
+}
+
+.unescoTag {
+  background: rgba(255, 200, 50, 0.18);
+  border: 1px solid rgba(255, 200, 50, 0.4);
+  border-radius: 20px;
+  padding: 3px 10px;
+  font-size: 12px;
+  color: #ffd166;
+}
+
+.detailName {
+  font-size: 19px;
+  font-weight: 700;
+  color: #ffffff;
+  line-height: 1.3;
+  margin: 0;
+}
+
+.detailNameEn {
+  font-size: 12px;
+  color: rgba(255, 255, 255, 0.4);
+  margin: -12px 0 0;
+  font-style: italic;
+}
+
+.stars {
+  display: flex;
+  align-items: center;
+  gap: 2px;
+  margin-top: 2px;
+}
+
+.starFull  { color: #ffd166; font-size: 16px; }
+.starHalf  { color: #ffd166; font-size: 16px; opacity: 0.6; }
+.starEmpty { color: rgba(255, 255, 255, 0.2); font-size: 16px; }
+
+.ratingNum {
+  font-size: 13px;
+  font-weight: 700;
+  color: #ffd166;
+  margin-left: 6px;
+}
+
+.reviewCount {
+  font-size: 11.5px;
+  color: rgba(255, 255, 255, 0.4);
+  margin: -12px 0 0;
+}
+
+.detailDescription {
+  font-size: 13.5px;
+  line-height: 1.65;
+  color: rgba(255, 255, 255, 0.75);
+  margin: 0;
+  border-top: 1px solid rgba(255, 255, 255, 0.1);
+  padding-top: 14px;
+}
+
+.infoBlock {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  background: rgba(0, 0, 0, 0.2);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 10px;
+  padding: 12px 14px;
+}
+
+.infoRow {
+  display: flex;
+  align-items: flex-start;
+  gap: 10px;
+}
+
+.infoIcon {
+  font-size: 14px;
+  flex-shrink: 0;
+  margin-top: 1px;
+}
+
+.infoText {
+  display: flex;
+  flex-direction: column;
+  gap: 1px;
+}
+
+.infoLabel {
+  font-size: 10.5px;
+  color: rgba(255, 255, 255, 0.4);
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+}
+
+.infoValue {
+  font-size: 13px;
+  color: rgba(255, 255, 255, 0.85);
+}
+
+.tagList {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+}
+
+.tag {
+  background: rgba(255, 255, 255, 0.1);
+  border: 1px solid rgba(255, 255, 255, 0.16);
+  border-radius: 20px;
+  padding: 3px 10px;
+  font-size: 11.5px;
+  color: rgba(255, 255, 255, 0.7);
+}
+
+.websiteBtn {
+  display: block;
+  text-align: center;
+  background: rgba(160, 210, 40, 0.18);
+  border: 1px solid rgba(160, 210, 40, 0.4);
+  border-radius: 8px;
+  padding: 10px;
+  font-size: 13px;
+  color: #d4ef7a;
+  text-decoration: none;
+  transition: background 0.15s, border-color 0.15s;
+  margin-top: 4px;
+}
+
+.websiteBtn:hover {
+  background: rgba(160, 210, 40, 0.28);
+  border-color: rgba(160, 210, 40, 0.6);
+}
+
+.emptyState {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 8px;
+  padding: 28px 12px;
+  text-align: center;
+}
+
+.emptyIcon {
+  font-size: 36px;
+  opacity: 0.35;
+}
+
+.emptyText {
+  font-size: 14px;
+  font-weight: 600;
+  color: rgba(255, 255, 255, 0.65);
+}
+
+.emptyHint {
+  font-size: 12px;
+  color: rgba(255, 255, 255, 0.35);
+  line-height: 1.6;
 }

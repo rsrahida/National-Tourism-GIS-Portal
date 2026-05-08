@@ -1,0 +1,169 @@
+.wrap {
+  padding: 0 0 16px 0;
+}
+
+.tabTitle {
+  font-size: 13px;
+  font-weight: 700;
+  color: #415808;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  padding: 14px 16px 10px;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  border-bottom: 1px solid rgba(65, 88, 8, 0.12);
+  margin-bottom: 4px;
+}
+
+.tabTitleCount {
+  background: #415808;
+  color: #fff;
+  font-size: 11px;
+  font-weight: 700;
+  border-radius: 10px;
+  padding: 1px 7px;
+  margin-left: auto;
+}
+
+/* ── Trip list ── */
+.tripList {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  padding: 6px 10px;
+}
+
+.tripItem {
+  display: flex;
+  align-items: flex-start;
+  gap: 10px;
+  padding: 10px;
+  border-radius: 10px;
+  cursor: pointer;
+  transition: background 0.15s;
+  border: 1px solid transparent;
+}
+
+.tripItem:hover {
+  background: rgba(65, 88, 8, 0.06);
+  border-color: rgba(65, 88, 8, 0.1);
+}
+
+.tripIndex {
+  min-width: 22px;
+  height: 22px;
+  border-radius: 50%;
+  background: #415808;
+  color: #fff;
+  font-size: 11px;
+  font-weight: 700;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-top: 2px;
+  flex-shrink: 0;
+}
+
+.tripIcon {
+  font-size: 18px;
+  line-height: 1;
+  margin-top: 1px;
+  flex-shrink: 0;
+}
+
+.tripInfo {
+  flex: 1;
+  min-width: 0;
+}
+
+.tripName {
+  font-size: 13.5px;
+  font-weight: 600;
+  color: #ffffff;
+  line-height: 1.3;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.tripMeta {
+  font-size: 11.5px;
+  color: #6b7a55;
+  margin-top: 2px;
+}
+
+.tripFee {
+  font-size: 11px;
+  color: #415808;
+  font-weight: 500;
+  margin-top: 3px;
+  background: rgba(65, 88, 8, 0.08);
+  display: inline-block;
+  padding: 1px 7px;
+  border-radius: 6px;
+}
+
+.removeBtn {
+  background: none;
+  border: none;
+  color: #bbb;
+  font-size: 13px;
+  cursor: pointer;
+  padding: 2px 4px;
+  border-radius: 4px;
+  transition: color 0.15s, background 0.15s;
+  flex-shrink: 0;
+  margin-top: 2px;
+  line-height: 1;
+}
+
+.removeBtn:hover {
+  color: #c0392b;
+  background: rgba(192, 57, 43, 0.08);
+}
+
+.emptyState {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 36px 20px 24px;
+  gap: 8px;
+  text-align: center;
+}
+
+.emptyIcon {
+  font-size: 36px;
+  opacity: 0.35;
+  margin-bottom: 4px;
+}
+
+.emptyText {
+  font-size: 14px;
+  font-weight: 600;
+  color: #415808;
+}
+
+.emptyHint {
+  font-size: 12px;
+  color: #888;
+  line-height: 1.5;
+  max-width: 220px;
+}
+
+.goSearchBtn {
+  margin-top: 10px;
+  background: #415808;
+  color: #fff;
+  border: none;
+  border-radius: 8px;
+  padding: 9px 18px;
+  font-size: 13px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background 0.15s;
+}
+
+.goSearchBtn:hover {
+  background: #2e4004;
+}
