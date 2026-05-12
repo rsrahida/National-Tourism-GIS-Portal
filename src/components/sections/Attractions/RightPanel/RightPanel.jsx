@@ -75,7 +75,7 @@ const HeartBtn = ({ isFav, onToggle }) => (
   </button>
 );
 
-const Section = ({ title, count, children, defaultOpen = true }) => {
+const Section = ({ title, count, children, defaultOpen = false }) => {
   const [open, setOpen] = useState(defaultOpen);
 
   return (
@@ -412,8 +412,8 @@ const RightPanel = ({
         <Section title="Favorilər" count={favoriteIds.length}>
           {favoriteAttractions.length === 0 ? (
             <div className={styles.emptyMini}>
-              Attraksion detallarında ürək düyməsinə basaraq favoritlərə əlavə
-              edin.
+              Attraksion detallarından favorilərə əlavə
+              edə bilərsiniz.
             </div>
           ) : (
             <div className={styles.favList}>
