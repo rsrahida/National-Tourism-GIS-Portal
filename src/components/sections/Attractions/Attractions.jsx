@@ -42,21 +42,21 @@ const WD = "rgba(255,255,255,0.55)";
 const ICONS = {
   tarix: pin({
     id: "t",
-    topColor: "#5a7a10",
-    midColor: "#2e4a04",
+    topColor: "#e03030",
+    midColor: "#8b0000",
     iconPath: `
       <rect x="16" y="24" width="12" height="12" rx="1" fill="${W}"/>
-      <rect x="19.5" y="29.5" width="5" height="6.5" rx="2.5" fill="rgba(46,74,4,0.7)"/>
+      <rect x="19.5" y="29.5" width="5" height="6.5" rx="2.5" fill="rgba(139,0,0,0.7)"/>
       <rect x="15" y="19.5" width="3.5" height="5.5" rx="0.8" fill="${W}"/>
       <rect x="20.25" y="18.5" width="3.5" height="6.5" rx="0.8" fill="${W}"/>
       <rect x="25.5" y="19.5" width="3.5" height="5.5" rx="0.8" fill="${W}"/>
-      <rect x="19.5" y="24.5" width="5" height="3.5" rx="1" fill="rgba(46,74,4,0.65)"/>
+      <rect x="19.5" y="24.5" width="5" height="3.5" rx="1" fill="rgba(139,0,0,0.65)"/>
     `,
   }),
   muzey: pin({
     id: "m",
-    topColor: "#4d6b0e",
-    midColor: "#263d02",
+    topColor: "#d42020",
+    midColor: "#7a0000",
     iconPath: `
       <polygon points="22,12 13,20 31,20" fill="${W}"/>
       <rect x="14" y="20" width="2.5" height="11" fill="${W}"/>
@@ -69,22 +69,22 @@ const ICONS = {
   }),
   din: pin({
     id: "d",
-    topColor: "#6b7a12",
-    midColor: "#3a4505",
+    topColor: "#e84040",
+    midColor: "#950505",
     iconPath: `
       <rect x="12" y="19" width="4" height="15" rx="1.5" fill="${W}"/>
       <polygon points="14,15 12,19 16,19" fill="${W}"/>
       <path d="M13.2 14.2 Q15 12.2 16.5 14.2 Q14.8 13.5 13.2 14.2Z" fill="${W}"/>
       <rect x="16" y="26" width="16" height="10" rx="1" fill="${W}"/>
       <path d="M16 26 Q16 16 24 16 Q32 16 32 26Z" fill="${W}"/>
-      <path d="M18.5 26 Q18.5 19 24 19 Q29.5 19 29.5 26" stroke="rgba(58,69,5,0.4)" stroke-width="1" fill="none"/>
-      <path d="M21 36 L21 29.5 Q24 27 27 29.5 L27 36Z" fill="rgba(58,69,5,0.6)"/>
+      <path d="M18.5 26 Q18.5 19 24 19 Q29.5 19 29.5 26" stroke="rgba(149,5,5,0.4)" stroke-width="1" fill="none"/>
+      <path d="M21 36 L21 29.5 Q24 27 27 29.5 L27 36Z" fill="rgba(149,5,5,0.6)"/>
     `,
   }),
   park: pin({
     id: "p",
-    topColor: "#6b9414",
-    midColor: "#3a5a04",
+    topColor: "#e03535",
+    midColor: "#900a0a",
     iconPath: `
       <path d="M22 31 Q14 25 15 15 Q20 18 22 31Z" fill="${W}"/>
       <path d="M22 31 Q30 25 29 15 Q24 18 22 31Z" fill="${W}"/>
@@ -95,25 +95,25 @@ const ICONS = {
   }),
   memarlıq: pin({
     id: "a",
-    topColor: "#4a6510",
-    midColor: "#253808",
+    topColor: "#cc2828",
+    midColor: "#7d0808",
     iconPath: `
       <rect x="12" y="25" width="7" height="11" rx="0.8" fill="${WD}"/>
       <rect x="18" y="17" width="8" height="19" rx="0.8" fill="${W}"/>
       <rect x="25" y="22" width="7" height="14" rx="0.8" fill="rgba(255,255,255,0.75)"/>
-      <rect x="19.5" y="19" width="2" height="2" rx="0.3" fill="rgba(37,56,8,0.6)"/>
-      <rect x="22.5" y="19" width="2" height="2" rx="0.3" fill="rgba(37,56,8,0.6)"/>
-      <rect x="19.5" y="23" width="2" height="2" rx="0.3" fill="rgba(37,56,8,0.6)"/>
-      <rect x="22.5" y="23" width="2" height="2" rx="0.3" fill="rgba(37,56,8,0.6)"/>
-      <rect x="19.5" y="27" width="2" height="2" rx="0.3" fill="rgba(37,56,8,0.6)"/>
-      <rect x="22.5" y="27" width="2" height="2" rx="0.3" fill="rgba(37,56,8,0.6)"/>
+      <rect x="19.5" y="19" width="2" height="2" rx="0.3" fill="rgba(125,8,8,0.6)"/>
+      <rect x="22.5" y="19" width="2" height="2" rx="0.3" fill="rgba(125,8,8,0.6)"/>
+      <rect x="19.5" y="23" width="2" height="2" rx="0.3" fill="rgba(125,8,8,0.6)"/>
+      <rect x="22.5" y="23" width="2" height="2" rx="0.3" fill="rgba(125,8,8,0.6)"/>
+      <rect x="19.5" y="27" width="2" height="2" rx="0.3" fill="rgba(125,8,8,0.6)"/>
+      <rect x="22.5" y="27" width="2" height="2" rx="0.3" fill="rgba(125,8,8,0.6)"/>
       <rect x="11" y="36" width="22" height="1.5" rx="0.5" fill="${W}"/>
     `,
   }),
   təbiət: pin({
     id: "n",
-    topColor: "#527010",
-    midColor: "#2d4505",
+    topColor: "#d93030",
+    midColor: "#880505",
     iconPath: `
       <circle cx="31" cy="15" r="3" fill="${W}"/>
       <line x1="31" y1="11" x2="31" y2="10" stroke="${W}" stroke-width="1.3" stroke-linecap="round"/>
@@ -126,12 +126,12 @@ const ICONS = {
   }),
   mədəniyyət: pin({
     id: "c",
-    topColor: "#5e7a0c",
-    midColor: "#324208",
+    topColor: "#e02828",
+    midColor: "#8c0808",
     iconPath: `
       <polygon points="22,12 33,22 22,32 11,22" fill="none" stroke="${W}" stroke-width="2"/>
       <polygon points="22,16 28,22 22,28 16,22" fill="${W}"/>
-      <circle cx="22" cy="22" r="2.8" fill="rgba(50,66,8,0.7)"/>
+      <circle cx="22" cy="22" r="2.8" fill="rgba(140,8,8,0.7)"/>
       <circle cx="22" cy="12" r="1.6" fill="${W}"/>
       <circle cx="33" cy="22" r="1.6" fill="${W}"/>
       <circle cx="22" cy="32" r="1.6" fill="${W}"/>
@@ -142,8 +142,8 @@ const ICONS = {
 
 const DEFAULT_ICON = pin({
   id: "def",
-  topColor: "#6b6b6b",
-  midColor: "#3a3a3a",
+  topColor: "#cc3333",
+  midColor: "#7a0000",
   iconPath: `<circle cx="22" cy="22" r="6" fill="${W}"/>`,
 });
 
@@ -151,8 +151,8 @@ const CLUSTER_PIN = enc(`
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 52 66" width="52" height="66">
   <defs>
     <linearGradient id="pgcl" x1="30%" y1="0%" x2="70%" y2="100%">
-      <stop offset="0%" stop-color="#7aaa1c"/>
-      <stop offset="100%" stop-color="#2e4a04"/>
+      <stop offset="0%" stop-color="#e03030"/>
+      <stop offset="100%" stop-color="#8b0000"/>
     </linearGradient>
     <filter id="shcl" x="-40%" y="-20%" width="180%" height="180%">
       <feDropShadow dx="0" dy="5" stdDeviation="4" flood-color="rgba(0,0,0,0.5)"/>
@@ -179,16 +179,16 @@ const buildRenderer = () => ({
     symbol: {
       type: "picture-marker",
       url: iconUrl,
-      width: "44px",
-      height: "56px",
+      width: "32px",
+      height: "40px",
       yoffset: "0px",
     },
   })),
   defaultSymbol: {
     type: "picture-marker",
     url: DEFAULT_ICON,
-    width: "44px",
-    height: "56px",
+    width: "32px",
+    height: "40px",
     yoffset: "0px",
   },
 });
@@ -218,8 +218,8 @@ const buildFeatureReduction = () => ({
   symbol: {
     type: "picture-marker",
     url: CLUSTER_PIN,
-    width: "52px",
-    height: "66px",
+    width: "38px",
+    height: "48px",
     yoffset: "0px",
   },
   popupTemplate: {

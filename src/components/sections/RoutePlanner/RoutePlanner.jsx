@@ -56,6 +56,12 @@ const RoutePlanner = () => {
   const [mapLoaded, setMapLoaded] = useState(false);
   const [isPanelOpen, setIsPanelOpen] = useState(false);
 
+  // refs to track previous values for zoom triggers
+  const prevOriginRef = useRef(null);
+  const prevDestinationRef = useRef(null);
+  const prevRouteResultsRef = useRef(null);
+  const prevIsAnimatingRef = useRef(false);
+
   const {
     origin,
     destination,
@@ -67,6 +73,7 @@ const RoutePlanner = () => {
     MODES,
   } = routeData;
 
+  // ── MAP INIT ────────────────────────────────────────────────────────────────
   useEffect(() => {
     const graphicsLayer = new GraphicsLayer();
     graphicsLayerRef.current = graphicsLayer;
@@ -98,10 +105,59 @@ const RoutePlanner = () => {
     };
   }, []);
 
+  // ── ZOOM 1: Başlanğıc nöqtə seçiləndə → o nöqtəyə zoom ────────────────────
+  useEffect(() => {
+    const view = viewRef.current;
+    if (!view || !origin) return;
+    if (origin === prevOriginRef.current) return;
+    prevOriginRef.current = origin;
+
+    view.goTo(
+      { center: [origin.lng, origin.lat], zoom: 14 },
+      { animate: true, duration: 800 },
+    );
+  }, [origin]);
+
+  // ── ZOOM 2: Son nöqtə seçiləndə → o nöqtəyə zoom ──────────────────────────
+  useEffect(() => {
+    const view = viewRef.current;
+    if (!view || !destination) return;
+    if (destination === prevDestinationRef.current) return;
+    prevDestinationRef.current = destination;
+
+    view.goTo(
+      { center: [destination.lng, destination.lat], zoom: 14 },
+      { animate: true, duration: 800 },
+    );
+  }, [destination]);
+
+  // ── ZOOM 3: "Marşrutu tap" basılanda → zoom yoxdur ────────────────────────
+  // routeResults dəyişəndə ref-i yeniləyirik, amma goTo çağırmırıq
+  useEffect(() => {
+    if (!routeResults) return;
+    prevRouteResultsRef.current = routeResults;
+  }, [routeResults]);
+
+  // ── ZOOM 4: "Başla" basılanda → başlanğıc nöqtəyə zoom ─────────────────────
+  useEffect(() => {
+    const view = viewRef.current;
+    if (!view) return;
+
+    const justStarted = isAnimating && !prevIsAnimatingRef.current;
+    prevIsAnimatingRef.current = isAnimating;
+
+    if (justStarted && origin) {
+      view.goTo(
+        { center: [origin.lng, origin.lat], zoom: 14 },
+        { animate: true, duration: 800 },
+      );
+    }
+  }, [isAnimating, origin]);
+
+  // ── GRAPHICS ────────────────────────────────────────────────────────────────
   useEffect(() => {
     const layer = graphicsLayerRef.current;
     const view = viewRef.current;
-
     if (!layer || !view) return;
 
     layer.removeAll();
@@ -109,6 +165,7 @@ const RoutePlanner = () => {
     const routeColor = MODES[selectedMode]?.color || "#a0d228";
     const rgb = hexToRgb(routeColor);
 
+    // Origin marker
     if (origin) {
       layer.add(
         new Graphic({
@@ -125,15 +182,9 @@ const RoutePlanner = () => {
           },
         }),
       );
-
-      if (!destination) {
-        view.goTo(
-          { center: [origin.lng, origin.lat], zoom: 14 },
-          { animate: true, duration: 800 },
-        );
-      }
     }
 
+    // Destination marker
     if (destination) {
       layer.add(
         new Graphic({
@@ -150,96 +201,9 @@ const RoutePlanner = () => {
           },
         }),
       );
-
-      if (!origin) {
-        view.goTo(
-          { center: [destination.lng, destination.lat], zoom: 14 },
-          { animate: true, duration: 800 },
-        );
-      }
     }
 
-    if (origin && destination) {
-      const padding = 100;
-      view.goTo(
-        {
-          target: {
-            type: "extent",
-            xmin: Math.min(origin.lng, destination.lng),
-            ymin: Math.min(origin.lat, destination.lat),
-            xmax: Math.max(origin.lng, destination.lng),
-            ymax: Math.max(origin.lat, destination.lat),
-            spatialReference: { wkid: 4326 },
-          },
-          padding: {
-            top: padding,
-            bottom: padding,
-            left: padding,
-            right: padding,
-          },
-        },
-        { animate: true, duration: 900 },
-      );
-    }
-
-    if (routePoints && routePoints.length > 0) {
-      const bounds = routePoints.reduce(
-        (acc, p) => ({
-          xmin: Math.min(acc.xmin, p.lng),
-          ymin: Math.min(acc.ymin, p.lat),
-          xmax: Math.max(acc.xmax, p.lng),
-          ymax: Math.max(acc.ymax, p.lat),
-        }),
-        { xmin: Infinity, ymin: Infinity, xmax: -Infinity, ymax: -Infinity },
-      );
-
-      view.goTo(
-        {
-          target: {
-            type: "extent",
-            ...bounds,
-            spatialReference: { wkid: 4326 },
-          },
-          padding: { top: 60, bottom: 60, left: 60, right: 60 },
-        },
-        { animate: true, duration: 900 },
-      );
-    }
-
-    if (destination) {
-      layer.add(
-        new Graphic({
-          geometry: {
-            type: "point",
-            longitude: destination.lng,
-            latitude: destination.lat,
-          },
-          symbol: {
-            type: "simple-marker",
-            color: [255, 107, 107],
-            outline: {
-              color: [255, 255, 255],
-              width: 2.5,
-            },
-            size: 14,
-          },
-        }),
-      );
-
-      if (routePoints.length === 0) {
-        view.goTo(
-          {
-            center: [destination.lng, destination.lat],
-            zoom: 15,
-          },
-          {
-            animate: true,
-            duration: 700,
-          },
-        );
-      }
-    }
-
+    // Route polyline
     if (routePoints && routePoints.length > 0) {
       const polyline = {
         type: "polyline",
@@ -269,47 +233,12 @@ const RoutePlanner = () => {
           },
         }),
       );
-      const bounds = routePoints.reduce(
-        (acc, p) => ({
-          xmin: Math.min(acc.xmin, p.lng),
-          ymin: Math.min(acc.ymin, p.lat),
-          xmax: Math.max(acc.xmax, p.lng),
-          ymax: Math.max(acc.ymax, p.lat),
-        }),
-        {
-          xmin: Infinity,
-          ymin: Infinity,
-          xmax: -Infinity,
-          ymax: -Infinity,
-        },
-      );
-
-      view.goTo(
-        {
-          target: {
-            type: "extent",
-            ...bounds,
-            spatialReference: { wkid: 4326 },
-          },
-          padding: {
-            top: 100,
-            bottom: 100,
-            left: 100,
-            right: 100,
-          },
-        },
-        {
-          animate: true,
-          duration: 1000,
-        },
-      );
     }
 
+    // Animation marker
     if (isAnimating && animMarker) {
       const svgFn = MODE_SVGS[selectedMode] || MODE_SVGS.driving;
-
       const iconUrl = svgToUrl(svgFn(routeColor));
-
       layer.add(
         new Graphic({
           geometry: {
@@ -335,6 +264,7 @@ const RoutePlanner = () => {
     animMarker,
     MODES,
   ]);
+
   return (
     <div className={styles.container}>
       {!mapLoaded && (

@@ -409,7 +409,7 @@ const RightPanel = ({
           )}
         </Section>
 
-        <Section title="Favorilər" count={favoriteIds.length}>
+        <Section title="Favorilər siyahısı" count={favoriteIds.length}>
           {favoriteAttractions.length === 0 ? (
             <div className={styles.emptyMini}>
               Attraksion detallarından favorilərə əlavə
@@ -468,7 +468,7 @@ const RightPanel = ({
           )}
         </Section>
 
-        <Section title="Səyahət Planı" count={tripAttractions.length}>
+        <Section title="Səyahət Planınız" count={tripAttractions.length}>
           {tripAttractions.length === 0 ? (
             <div className={styles.emptyMini}>
               Səyahət planına attraksion əlavə edin.

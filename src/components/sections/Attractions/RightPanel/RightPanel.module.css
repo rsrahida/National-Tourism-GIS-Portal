@@ -201,9 +201,8 @@
 }
 
 .sectionTitle {
-  font-size: 12px;
+  font-size: 14px;
   font-weight: 700;
-
   color: rgba(255, 255, 255, 0.984);
   flex: 1;
 }
@@ -322,8 +321,7 @@
 
 .clearFiltersBtn:hover {
   color: rgba(255, 255, 255, 0.85);
-   background-color: #415808;
-  
+  background-color: #415808;
 }
 
 .favList {

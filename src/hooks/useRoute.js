@@ -5,7 +5,7 @@ const NOMINATIM_BASE = "/nominatim/search";
 
 const AVG_SPEED_KMH = {
   driving: 100,
-  bus: 90,
+  bus: 80,
   walking: 5,
 };
 
@@ -20,7 +20,7 @@ const MODES = {
   bus: {
     label: "Avtobus",
     icon: '<i class="fa-solid fa-bus"></i>',
-    color: "#ffd166",
+    color: "#e8821c",
     osrmProfile: "driving",
     speedKmh: AVG_SPEED_KMH.bus,
     stopPenaltyPerKm: 44,

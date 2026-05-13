@@ -1413,7 +1413,7 @@
       "nameEn": "Baku City Center",
       "description": "Alov Qüllələri, Bulvar, İçərişəhər — Bakının ikoni silueti",
       "thumbnail": "scene-baku-center.jpg",
-      "center": [49.8476, 40.3655],
+      "center": [49.838, 40.363],
       "camera": {
         "tilt": 45,
         "heading": 320,
@@ -1428,18 +1428,18 @@
         "labels": true
       },
       "highlights": [
-        { "name": "Alov Qüllələri", "coordinates": [49.8476, 40.365] },
-        { "name": "İçərişəhər", "coordinates": [49.8337, 40.366] },
-        { "name": "Bulvar", "coordinates": [49.849, 40.37] }
+        { "name": "Alov Qüllələri", "coordinates": [49.833, 40.3653] },
+        { "name": "İçərişəhər", "coordinates": [49.8343, 40.3597] },
+        { "name": "Bulvar", "coordinates": [49.8497, 40.3708] }
       ]
     },
     {
       "id": "scene-002",
       "name": "Bakı Bulvarı",
       "nameEn": "Baku Boulevard",
-      "description": "Xəzər sahili boyunca uzanan bulvar — gün batımı mənzərəsi",
+      "description": "Xəzər sahili boyunca uzanan bulvar — möhtəşəm dəniz mənzərəsi",
       "thumbnail": "scene-boulevard.jpg",
-      "center": [49.849, 40.368],
+      "center": [49.8497, 40.369],
       "camera": {
         "tilt": 55,
         "heading": 180,
@@ -1450,21 +1450,21 @@
         "buildings": true,
         "trees": true,
         "roads": true,
-        "shadows": true,
+        "shadows": false,
         "labels": false
       },
       "highlights": [
-        { "name": "Kristal Zal", "coordinates": [49.8612, 40.362] },
-        { "name": "Avropa Meydanı", "coordinates": [49.849, 40.37] }
+        { "name": "Kristal Zal", "coordinates": [49.85, 40.344] },
+        { "name": "Avropa Meydanı", "coordinates": [49.8452, 40.3693] }
       ]
     },
     {
       "id": "scene-003",
       "name": "Neft Daşları",
       "nameEn": "Oil Rocks (Neft Dashlari)",
-      "description": "Xəzərdə dünyanın ilk dəniz neft platforması — 120 km dənizin içi",
+      "description": "Xəzərdə dünyanın ilk dəniz neft platforması — sahildən 86 km uzaqda",
       "thumbnail": "scene-neftdashlari.jpg",
-      "center": [50.83, 40.33],
+      "center": [50.5833, 40.3167],
       "camera": {
         "tilt": 60,
         "heading": 0,
@@ -1479,7 +1479,10 @@
         "labels": true
       },
       "highlights": [
-        { "name": "Neft Daşları Platforması", "coordinates": [50.83, 40.33] }
+        {
+          "name": "Neft Daşları Platforması",
+          "coordinates": [50.5833, 40.3167]
+        }
       ]
     }
   ],
