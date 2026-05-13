@@ -198,9 +198,7 @@ const CityScene = () => {
         duration: 2800,
         easing: "out-cubic",
       });
-    } catch (_) {
-      /* ləğv */
-    }
+    } catch (_) {}
 
     if (ctrl.signal.aborted) return;
 
@@ -376,7 +374,6 @@ const CityScene = () => {
             </span>
             {isFlying && <span className={styles.flyingDot} />}
           </div>
-
           <div className={styles.filmCards}>
             {SCENES.map((scene, i) => (
               <button

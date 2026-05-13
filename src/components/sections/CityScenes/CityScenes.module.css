@@ -198,7 +198,6 @@
   background: rgba(26, 46, 5, 0.78);
   border-color: rgba(168, 184, 122, 0.8);
   color: #a8b87a;
-  transform: translateY(-2px);
   box-shadow:
     0 4px 14px rgba(0, 0, 0, 0.4),
     0 0 10px rgba(107, 148, 20, 0.2);
